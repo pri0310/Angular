@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="orgForm" (ngSubmit)="onSubmit()">
+    <mat-form-field style="margin-top: 100px;">
+      <input matInput type="text" [formControlName]="'orgName'" placeholder="Organization's Name" id="orgName" required />
+      <mat-error *ngIf="hasError('orgName', 'required')">Please Enter Organization Name.</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <input matInput type="text" [formControlName]="'orgAddress'"  id="orgAddress" placeholder="Address" required/>
+        <mat-error *ngIf="hasError('orgAddress', 'required')">Please Enter Address.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput type="text" [formControlName]="'orgCity'"  id="orgCity" placeholder="City" required />
+          <mat-error *ngIf="hasError('orgCity', 'required')">Please City.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput type="text" placeholder="State" [formControlName]="'orgState'"  id="orgState" required/>
+          <mat-error *ngIf="hasError('orgState', 'required')">Please Enter State.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Zip" [formControlName]="'orgZip'"  id="orgZip" required />
+            <mat-error *ngIf="hasError('orgZip', 'required')">Please Enter Zip.</mat-error>
+            <mat-error *ngIf="hasError('orgZip', 'maxlength')">Zip should be of 7 numbers.</mat-error>
+            <mat-error *ngIf="hasError('orgZip', 'pattern')">Zip should be numbers.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="input-design">
+              <input matInput type="telephone"  placeholder="Phone Number" [formControlName]="'orgPhone1'"  id="orgPhone1" required />
+              <mat-error *ngIf="hasError('orgPhone1', 'required')">Please Enter Phone Number.</mat-error>
+              <mat-error *ngIf="hasError('orgPhone1', 'maxlength')">Number should not exceed 15 numbers.</mat-error>
+              <mat-error *ngIf="hasError('orgPhone1', 'pattern')">Phone Number should be numbers.</mat-error>
+            </mat-form-field>
+            <mat-form-field >
+                <input matInput type="telephone" placeholder="Alternate Number" [formControlName]="'orgPhone2'"  id="userPhone2" required />
+                <mat-error *ngIf="hasError('orgPhone2', 'required')">Please Enter Alternate Number.</mat-error>
+              <mat-error *ngIf="hasError('orgPhone2', 'maxlength')">Number should not exceed 15 numbers.</mat-error>
+              <mat-error *ngIf="hasError('orgPhone2', 'pattern')">Phone Number should be numbers.</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                  <input matInput type="email" placeholder="Email" [formControlName]="'orgEmail'"  id="orgEmail"  required/>
+                  <mat-error *ngIf="hasError('orgEmail', 'required')">Please Enter Email.</mat-error>
+                  <mat-error *ngIf="hasError('orgEmail', 'email')">Please Enter Valid Email.</mat-error>
+                </mat-form-field>
+    <button mat-raised-button color="accent" [disabled]="!orgForm.valid" *ngIf="!isLoading"   type="submit" class="button-design-small" > Submit </button>
+    <button type="button" mat-raised-button color="warn" class="button-design-small" (click)="onCancel()"> Clear</button>
+  </form>
+  </mat-card>
+  

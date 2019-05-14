@@ -1,0 +1,48 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Organizations</h4>
+                      <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th> S.No.</th>
+                                  <th> Name</th>
+                                  <th>Address</th>
+                                  <th> City</th>
+                                  <th>State</th>
+                                  <th>Zip</th>
+                                  <th> Phone No.</th>
+                                  <th> Alternate Phone No.</th>
+                                  <th> Email</th>
+                                  <th>Edit</th>
+                                <th> Delete</th>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let org of organization; let i=index">
+                                    <td> {{i+1}}</td>
+                                    <td>{{org.orgName }}</td> 
+                                    <td>{{org.orgAddress  }}</td>
+                                    <td>{{ org.orgCity }}</td>
+                                    <td>{{ org.orgState }}</td>
+                                    <td>{{ org.orgZip }}</td>
+                                    <td>{{ org.orgPhone1 }}</td>
+                                    <td>{{ org.orgPhone2 }}</td>
+                                    <td>{{ org.orgEmail }}</td> 
+                                    <td><a  class="btn btn-primary" [routerLink]="['/organization/view/edit', org.Id]">Edit</a></td>
+                                    <td><a [routerLink]="" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
